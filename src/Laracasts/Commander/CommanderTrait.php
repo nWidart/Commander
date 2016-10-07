@@ -2,7 +2,8 @@
 
 use ReflectionClass;
 use InvalidArgumentException;
-use Input, App;
+use Illuminate\Support\Facades\Request;
+use App;
 
 trait CommanderTrait {
 
@@ -16,7 +17,7 @@ trait CommanderTrait {
      */
     protected function execute($command, array $input = null, $decorators = [])
     {
-        $input = $input ?: Input::all();
+        $input = $input ?: Request::all();
 
         $command = $this->mapInputToCommand($command, $input);
 
